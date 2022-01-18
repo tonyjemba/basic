@@ -1,1 +1,1 @@
-<h1>hehehehehe i am the contact</h1>
+<h1>hehehehehe i am the contact loaded from the contactcontroller</h1>
