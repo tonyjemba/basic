@@ -413,7 +413,7 @@
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <h1>Welcome Page</h1>
-            <a href="{{ url('/') }}">Home</a>|
+            <a href="{{ url('/') }}">Dashboard</a>|
             <a href="{{ URL::to('/contact') }}">Contact</a>|
             <a href="{{ URL::to('/about') }}">About</a>|
             <a href="{{ route('blog1') }}">To the seo route</a>
