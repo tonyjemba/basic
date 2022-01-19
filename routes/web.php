@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\about;
+use App\Http\Controllers\aboutContoller;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\seo_routeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +22,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('/about', function () {  
-    return view('about');
-});
+Route::get('/about', [aboutContoller::class,'index']);
+
+Route::get('/How_to_intall_devDependencies',[seo_routeController::class, 'index'])->name('blog1');
 
 Route::get('/contact',[ContactController::class, 'index'])->middleware('age');
