@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\about;
 use App\Http\Controllers\aboutContoller;
+use App\Http\Controllers\categoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\seo_routeController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB;
 
 
 /*
@@ -30,6 +30,12 @@ Route::get('/about', [aboutContoller::class,'index']);
 Route::get('/How_to_intall_devDependencies',[seo_routeController::class, 'index'])->name('blog1');
 
 Route::get('/contact',[ContactController::class, 'index'])->middleware('age');
+
+//category route
+
+Route::get('/category/all',[categoryController::class, 'index'])->name('all.category');
+
+Route::post('/category/add',[categoryController::class, 'addCat'])->name('store_category');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
