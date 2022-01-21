@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class categoryController extends Controller
 {
     public function index(){
-
-        return view('admin.All_category.index');
+        $categories = Category::all();
+        return view('admin.All_category.index',compact('categories'));
     }
 
     public function addCat(Request $request){

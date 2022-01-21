@@ -26,22 +26,27 @@
                             <table class="table">
                                 <thead>
                                   <tr>
-                                    <th scope="col">User id</th>
-                                    <th scope="col">Category Name</th>
+                                      <th scope="col">SL no</th>
+                                      <th scope="col">Category Name</th>
+                                    <th scope="col">User</th>
                                     <th scope="col">created_At</th>
-                                    <th scope="col">Upated_At</th>
-                                    <th scope="col">Deleted_At</th>
         
                                   </tr>
                                 </thead>
                                 <tbody>
-        
-                                    <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                      </tr>
+                                        @php
+                                            $i=1;
+                                        @endphp
+                                        @foreach ($categories as $category )
+                                        <tr>
+                                            <th scope="row">{{ $i++ }}</th>
+                                            <td>{{ $category->category_name }}</td>
+                                            <td>{{ $category->user_id }}</td>
+                                            <td>{{ $category->created_at }}</td>
+
+                                          </tr>
+                                        @endforeach
+                                    
                                   
                                  
                                 </tbody>
