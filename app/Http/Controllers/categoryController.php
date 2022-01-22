@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class categoryController extends Controller
 {
     public function index(){
-        $categories = Category::all();
+        $categories = Category::latest()->paginate(5);
+        //Using query builder
+        //$categories = DB::table('categories')->latest()->paginate(5);
         return view('admin.All_category.index',compact('categories'));
     }
 

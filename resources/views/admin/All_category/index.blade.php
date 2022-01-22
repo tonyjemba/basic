@@ -34,15 +34,22 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                        @php
+                                        {{-- @php
                                             $i=1;
-                                        @endphp
+                                        @endphp --}}
                                         @foreach ($categories as $category )
                                         <tr>
-                                            <th scope="row">{{ $i++ }}</th>
+                                            <th scope="row">{{ $categories->firstItem()+$loop->index}}</th>
                                             <td>{{ $category->category_name }}</td>
                                             <td>{{ $category->user_id }}</td>
-                                            <td>{{ $category->created_at }}</td>
+
+                                            <td>
+                                                @if ($category->created_at == NUll)
+                                                    <span>Unknown</span>
+                                                    @else
+                                                    {{ $category->created_at->diffForHumans() }}
+                                                @endif
+                                                </td>
 
                                           </tr>
                                         @endforeach
@@ -51,6 +58,7 @@
                                  
                                 </tbody>
                               </table>
+                              {{ $categories->links() }}
                         </div>
                 
                     </div>
