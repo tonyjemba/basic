@@ -34,8 +34,9 @@ Route::get('/contact',[ContactController::class, 'index'])->middleware('age');
 //category route
 
 Route::get('/category/all',[categoryController::class, 'index'])->name('all.category');
-
 Route::post('/category/add',[categoryController::class, 'addCat'])->name('store_category');
+Route::get('/category/edit/{id}',[categoryController::class,'edit']);
+Route::post('category/update/{id}', [categoryController::class,'update']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
