@@ -6,14 +6,16 @@ use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class categoryController extends Controller
 {
     public function index(){
         $categories = Category::latest()->paginate(5);
+        $trashed = Category::onlyTrashed()->latest()->paginate(3);
         //Using query builder
         //$categories = DB::table('categories')->latest()->paginate(5);
-        return view('admin.All_category.index',compact('categories'));
+        return view('admin.All_category.index',compact('categories', 'trashed'));
     }
 
     public function addCat(Request $request){
@@ -50,5 +52,23 @@ class categoryController extends Controller
 
         return redirect()->route('all.category')->with('success','Category updated Successfully');
 
+    }
+
+    public function softdelete($id){
+        $softdelcat = Category::find($id)->delete();
+
+        return Redirect()->back()->with('success','Record Temporary deleted');
+    }
+
+    public function restore($id){
+
+        $restorecat = Category::withTrashed()->find($id)->restore();
+
+        return Redirect()->back()->with('success','Record restored successfully');
+    }
+
+    public function deletePermanent($id){
+       $deletedcat = Category::onlyTrashed()->find($id)->forceDelete();
+       return Redirect()->back()->with('success','Record Permanently deleted');
     }
 }
