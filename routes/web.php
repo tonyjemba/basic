@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\aboutContoller;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\seo_routeController;
@@ -41,6 +42,10 @@ Route::get('softdelete/category/{id}',[categoryController::class,'softdelete']);
 Route::get('category/restore/{id}',[categoryController::class,'restore']);
 Route::get('category/delete/permanent/{id}',[categoryController::class,'deletePermanent']);
 
+//brands routes
+Route::get('/brand/all',[BrandController::class,'index'])->name('all.brand');
+Route::post('brand/add',[BrandController::class,'addBrand'])->name('store_brand');
+//middleware
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     //using eloquent ORM
