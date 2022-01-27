@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class categoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $categories = Category::latest()->paginate(5);
         $trashed = Category::onlyTrashed()->latest()->paginate(3);

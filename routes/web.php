@@ -4,6 +4,7 @@ use App\Http\Controllers\aboutContoller;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\multipleImageController;
 use App\Http\Controllers\seo_routeController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+//welcom
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,6 +52,10 @@ Route::post('/brand/add',[BrandController::class,'addBrand'])->name('store_brand
 Route::get('/brand/edit/{id}',[BrandController::class,'edit']);
 Route::post('/brand/update/{id}',[BrandController::class,'update']);
 Route::get('/brand/delete/{id}',[BrandController::class,'delete']);
+
+//multiple Images routes
+Route::get('multipleImages/all',[multipleImageController::class,'index'])->name('multipleImage');
+Route::post('multipleImages/add',[multipleImageController::class,'add'])->name('addmultipleImages');
 //middleware
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
