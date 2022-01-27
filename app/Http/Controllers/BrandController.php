@@ -6,6 +6,7 @@ use App\Models\Brands;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Image;
 
 class BrandController extends Controller
 {
@@ -36,7 +37,12 @@ class BrandController extends Controller
     $randomImageName= time().'_'.$randomid.'.'.$imageExtension;
     $imageurl='images/brands/'.$randomImageName;
 
-    $image->move(public_path('images/brands'),$randomImageName);
+    //normal way
+    //$image->move(public_path('images/brands'),$randomImageName);
+
+    //using the image intervention package
+    Image::make($image)->resize(300,200)->save($imageurl);
+
  
     //insert the image name and path/url in the database 
 
